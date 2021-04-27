@@ -21,7 +21,7 @@ const noteReducer = (state = initialState, action) => {
 };
 
 // passing the note that we want to add into the state list of the notes
-const addNote = (dispatch) => async (note) => {
+const addnote = (dispatch) => async (note) => {
   dispatch({ type: ADD_NOTE, payload: note });
 };
 
@@ -34,7 +34,7 @@ const deletenote = (dispatch) => async (id) => {
 export const { Provider, Context } = createDataContext(
   noteReducer,
   {
-    addNote,
+    addnote,
     deletenote,
   },
   []

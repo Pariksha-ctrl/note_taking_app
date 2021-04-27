@@ -48,7 +48,7 @@ function AddNotes({ navigation }) {
           small
           icon="check"
           disabled={noteTitle == "" ? true : false}
-          onPress= { () => onSaveNote()}
+          onPress={() => onSaveNote()}
         />
       </View>
     </>

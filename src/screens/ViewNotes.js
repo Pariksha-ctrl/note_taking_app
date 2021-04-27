@@ -1,33 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import { Text, FAB, List } from "react-native-paper";
 import Header from "../component/Header";
-impr
+import { Context as NoteContext } from "../context/NoteContext";
 
 function ViewNotes({ navigation }) {
   // creating useState variables for notes with empty array which will empty initially
   // we will show this into the flatlist
-  const [notes, setNotes] = useState([]);
+  // const [notes, setNotes] = useState([]);
+  const { state, addnote, deletenote } = useContext(NoteContext);
   // this is a helper method
   const addNotes = (note) => {
+    note.id = state.length + 1;
+    addnote(note);
     // creating a random id
-    note.id = notes.length + 1;
+    //note.id = state.length + 1;
     // it will get all the notes in the array
-    setNotes([...notes, note]);
+    // setNotes([...notes, note]);
   };
 
   return (
     <>
       <Header titleText="Note Taking App" />
       <View style={styles.container}>
-        {notes.length === 0 ? (
+        {state.length === 0 ? (
           <View style={styles.titleContainer}>
             <Text style={styles.title}>You don't have any notes!</Text>
           </View>
         ) : (
           // creating a Flatlist
           <FlatList
-            data={notes}
+            data={state}
             // inside the render item we are passing item prop
             renderItem={({ item }) => (
               <List.Item
@@ -35,6 +38,7 @@ function ViewNotes({ navigation }) {
                 description={item.noteDescription}
                 descriptionNumberOfLines={1}
                 titleStyle={styles.listTitle}
+                onPress={() => deletenote(item.id)}
               />
             )}
             keyExtractor={(item) => item.id.toString()}
@@ -70,14 +74,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight: "bold",
   },
   fab: {
-    backgroundColor: "lightblue",
+    backgroundColor: "blue",
     position: "absolute",
     margin: 20,
     right: 0,
     bottom: 10,
+    fontSize: 20,
   },
   listTitle: {
     fontSize: 25,
