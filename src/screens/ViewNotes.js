@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { Text, FAB } from "react-native-paper";
+import { StyleSheet, View, FlatList } from "react-native";
+import { Text, FAB, list } from "react-native-paper";
 import Header from "../component/Header";
 
 function ViewNotes({ navigation }) {
+  // creating useState variables for notes with empty array which will empty initially
+  // we will show this into the flatlist
+  const [notes, setNotes] = useState([]);
+  const addNotes = (note) => {
+    // creating a random id
+    note.id = notes.length + 1;
+    // it will get all the notes in the array
+    setNotes([...notes, note]);
+  };
+
   return (
     <>
       <Header titleText="Note Taking App" />

@@ -5,6 +5,7 @@ import Header from "../component/Header";
 import navigation from "../navigation";
 
 function AddNotes() {
+  // creating useState variables for notes which will empty initially
   const [noteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
 
