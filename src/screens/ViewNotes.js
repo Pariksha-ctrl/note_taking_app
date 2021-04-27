@@ -64,7 +64,7 @@ function ViewNotes({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "lightblue",
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
@@ -83,10 +83,10 @@ const styles = StyleSheet.create({
     margin: 20,
     right: 0,
     bottom: 10,
-    fontSize: 20,
   },
   listTitle: {
-    fontSize: 25,
+    fontSize: 27,
+    fontWeight: "bold",
   },
 });
 

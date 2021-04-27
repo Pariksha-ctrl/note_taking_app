@@ -26,14 +26,14 @@ function AddNotes({ navigation }) {
       />
       <View style={styles.container}>
         <TextInput
-          label="Add Note Title"
+          label="Add Your Note Title"
           value={noteTitle}
           mode="outlined"
           onChangeText={setNoteTitle}
           style={styles.title}
         />
         <TextInput
-          label="Add Note Description"
+          label="Add Your Note Description"
           value={noteDescription}
           mode="flat"
           onChangeText={setNoteDescription}
@@ -58,12 +58,12 @@ function AddNotes({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "lightblue",
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
   iconButton: {
-    backgroundColor: "green",
+    backgroundColor: "blue",
     position: "absolute",
     right: 0,
     top: 40,
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     marginBottom: 15,
   },
   text: {
     height: 300,
-    fontSize: 15,
+    fontSize: 20,
   },
   fab: {
     position: "absolute",
