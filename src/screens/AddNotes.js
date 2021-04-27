@@ -1,18 +1,55 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text } from "react-native-paper";
+import { IconButton, Text, TextInput, FAB } from "react-native-paper";
 import Header from "../component/Header";
+import navigation from "../navigation";
 
 function AddNotes() {
   const [noteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
+
+  // when we press save button then we will navigate the data back to the new note screen
+  function saveNote() {
+    navigation.state.params.addNote({ noteTitle, noteValue });
+    navigation.goBack();
+  }
+
   return (
     <>
       <Header titleText="Add New Note" />
+      <IconButton
+        icon="close"
+        size={23}
+        color="white"
+        onPress={() => navigation.goBack}
+        style={styles.iconButton}
+      />
       <View style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>add Notes Modal Screen</Text>
-        </View>
+        <TextInput
+          label="Add Note Title"
+          value={noteTitle}
+          mode="outline"
+          onChangeText={setNoteTitle}
+          style={styles.title}
+        />
+        <TextInput
+          label="Add Note Description"
+          value={noteDescription}
+          mode="flat"
+          onChangeText={setNoteDescription}
+          multiline={true}
+          style={styles.text}
+          scrollEnabled={true}
+          returnKeyLabel="done"
+          blurOnSubmit={true}
+        />
+        <FAB
+          style={styles.fab}
+          small
+          icon="check"
+          disabled={noteTitle == "" ? true : false}
+          onPress={() => onSaveNote()}
+        />
       </View>
     </>
   );
@@ -25,13 +62,31 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
+  iconButton: {
+    backgroundColor: "green",
+    position: "absolute",
+    right: 0,
+    top: 40,
+    margin: 10,
+  },
   titleContainer: {
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
+    marginBottom: 15,
+  },
+  text: {
+    height: 300,
+    fontSize: 15,
+  },
+  fab: {
+    position: "absolute",
+    margin: 20,
+    right: 0,
+    bottom: 0,
   },
 });
 
