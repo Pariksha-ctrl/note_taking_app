@@ -1,15 +1,15 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { AppBar, Title } from "react-native-paper";
+import { Appbar, Title } from "react-native-paper";
 
 // passing titleText as a props
 function Header({ titleText }) {
   return (
-    <AppBar.Header style={styles.headerContainer}>
+    <Appbar.Header style={styles.headerContainer}>
       <View style={styles.container}>
         <Title style={styles.title}>{titleText}</Title>
       </View>
-    </AppBar.Header>
+    </Appbar.Header>
   );
 }
 
