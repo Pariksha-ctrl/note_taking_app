@@ -2,34 +2,33 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { IconButton, Text, TextInput, FAB } from "react-native-paper";
 import Header from "../component/Header";
-import navigation from "../navigation";
 
-function AddNotes() {
-  // creating useState variables for notes which will empty initially
+function AddNotes({ navigation }) {
+  // creating useState variables for notes which is empty initially
   const [noteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
 
   // when we press save button then we will navigate the data back to the new note screen
-  function saveNote() {
-    navigation.state.params.addNote({ noteTitle, noteValue });
+  function onSaveNote() {
+    navigation.state.params.addNotes({ noteTitle, noteDescription });
     navigation.goBack();
   }
 
   return (
     <>
-      <Header titleText="Add New Note" />
+      <Header titleText="Add a New Note" />
       <IconButton
         icon="close"
         size={23}
         color="white"
-        onPress={() => navigation.goBack}
+        onPress={() => navigation.goBack()}
         style={styles.iconButton}
       />
       <View style={styles.container}>
         <TextInput
           label="Add Note Title"
           value={noteTitle}
-          mode="outline"
+          mode="outlined"
           onChangeText={setNoteTitle}
           style={styles.title}
         />
@@ -49,7 +48,7 @@ function AddNotes() {
           small
           icon="check"
           disabled={noteTitle == "" ? true : false}
-          onPress={() => onSaveNote()}
+          onPress= { () => onSaveNote()}
         />
       </View>
     </>
