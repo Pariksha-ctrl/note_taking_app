@@ -1,16 +1,18 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
-import navigation from "../navigation";
-// import Header from "../component/Header";
+import Header from "../component/Header";
 
 function AddNotes() {
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>add Notes Modal Screen</Text>
+    <>
+      <Header titleText="Add New Note" />
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>add Notes Modal Screen</Text>
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
